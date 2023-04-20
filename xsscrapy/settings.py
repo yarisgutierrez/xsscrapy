@@ -13,6 +13,9 @@ BOT_NAME = 'xsscrapy'
 SPIDER_MODULES = ['xsscrapy.spiders']
 NEWSPIDER_MODULE = 'xsscrapy.spiders'
 
+# Adding TELNETCONSOLE_ENABLED=False in order to move past the current error with failing to load Twisted
+#TELNETCONSOLE_ENABLED=False
+
 # For adding javascript rendering
 #DOWNLOAD_HANDLERS = {'http':'xsscrapy.scrapyjs.dhandler.WebkitDownloadHandler',
 #                     'https': 'xsscrapy.scrapyjs.dhandler.WebkitDownloadHandler'}

@@ -38,7 +38,7 @@ class XSSCharFinder(object):
         delim = meta['delim']
         param = meta['xss_param']
         resp_url = response.url
-        body = response.body
+        body = response.body.decode('ISO-8859-1')
         mismatch = False
         error = None
         fuzz_payload = payload.replace(delim, '').replace(';9', '') # xss char payload
@@ -50,7 +50,7 @@ class XSSCharFinder(object):
         sc_full_match = '%s.{0,80}?%s;9' % (delim, delim)
 
         # Quick sqli check based on DSSS
-        dbms, regex = self.sqli_check(body, meta['orig_body'])
+        dbms, regex = self.sqli_check(body, meta['orig_body'].decode())
         if dbms:
             msg = 'Possible SQL injection error! Suspected DBMS: %s, regex used: %s' % (dbms, regex)
             item = self.make_item(meta, resp_url, msg, 'N/A', None)
